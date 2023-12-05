@@ -65,9 +65,40 @@ function checkAnswer(selectAnswer) {
         }
     }
 
+function showFeedback(message) {
+    feedbackContainer.textContent = message;
+    feedbackContainer.classList.remove("hide");
+    setTimeout(() => {
+        feedbackContainer.classList.add("hide");
+        }, 1000);
+    }
 
 
-}
+function startTimer() {
+    let timeLeft = 60;
+    updateTime(timeLeft);
+    
+    timer = setInterval(function () {
+        timeLeft--;
+        updateTime(timeLeft);
+    
+        if (timeLeft <= 0) {
+            endQuiz();
+            }
+        }, 1000);
+    }
 
 
-}
+function updateTime(time) {
+    timeElement.textContent = time;
+        }
+    
+    function endQuiz() {
+        clearInterval(timer);
+        questionsContainer.classList.add("hide");
+        document.getElementById("end-screen").classList.remove("hide");
+        document.getElementById("final-score").textContent = timeElement.textContent;
+        submitButton.style.display = "block";
+      }
+    
+    function submitScore()
