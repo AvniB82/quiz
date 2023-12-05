@@ -21,7 +21,7 @@ function startQuiz() {
     startButton.style.display = "none";
     questionsContainer.classList.remove("hide");
 
-    displayQuestion(currentQuestionIndex);
+    displayQuesation(currentQuestionIndex);
     startTimer();
 
     submitButton.styleDisplay = "none";
@@ -45,6 +45,29 @@ function displayQuesation(index) {
     }
 }
 
+// displaying correct or incorrect message
+function checkAnswer(selectAnswer) {
+    if (selectAnswer === questions [currentQuestionIndex].correctAnswer) {
+        showFeedback ("correct");
+    }
+    else {
+        showFeedback("incorrect");
+    }
+
+    currentQuestionIndex++;
+    }
+
+    if (currentQuestionIndex < questions.length) {
+        displayQuesation(currentQuestionIndex);
+    }
+    else {
+        endQuiz();
+        }
+    }
+
+
+
+}
 
 
 }
