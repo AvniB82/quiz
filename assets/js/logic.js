@@ -62,8 +62,7 @@ function checkAnswer(selectAnswer) {
     }
     else {
         endQuiz();
-        }
-    }
+    };
 
 function showFeedback(message) {
     feedbackContainer.textContent = message;
@@ -101,4 +100,7 @@ function updateTime(time) {
         submitButton.style.display = "block";
       }
     
-    function submitScore()
+    function submitScore() {
+
+    }
+}
