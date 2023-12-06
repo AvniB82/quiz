@@ -1,4 +1,4 @@
-const questions = [
+var questions = [
 
 {
   question: "question 1",

@@ -1,7 +1,8 @@
-var questions = [];
+var questions = [
 
+];
 
-document.addEventListener("DOMContainerLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
 
 var startButton = document.getElementById("start");
 var timeElement = document.getElementById("time");
@@ -21,33 +22,45 @@ function startQuiz() {
     startButton.style.display = "none";
     questionsContainer.classList.remove("hide");
 
-    displayQuesation(currentQuestionIndex);
+    displayQuestion(currentQuestionIndex);
     startTimer();
 
-    submitButton.styleDisplay = "none";
+    submitButton.style.display = "none";
 }
 
 // displaying questions
-function displayQuesation(index) {
-    var questionsTitle = document.getAnimations("questions-title");
-    var choiceContainer = doccument.getElementById("choice");
+function displayQuestion(index) {
+    var questionTitle = document.getElementById("question-title");
+    var choicesContainer = document.getElementById("choices");
 
 
-    questionsTitle.textContent = questions[index].questions;
-    choiceContainer.innnerHTML = "";
+    questionTitle.textContent = questions[index].question;
+    questionsContainer.innerHTML = "";
 
-    for (let i = 0; i < questions[index].choices.length; i++) {
+    var allChoices = [...questions[index].wrongAnswers, questions[index].correctAnswer];
+    shuffleArray(allChoices);
+
+
+    for (var i = 0; i < allChoices.length; i++) {
         var choiceButton = document.createElement("button");
-        choiceButton.textContent = questions[index].choioces[i];
+        choiceButton.textContent = allChoices[i];
         choiceButton.addEventListener("click", function () {
-            checkAnswer(choiceButton.textContent);
+          checkAnswer(choiceButton.textContent);
         });
+        choicesContainer.appendChild(choiceButton);
+      }
     }
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+
 }
 
 // displaying correct or incorrect message
-function checkAnswer(selectAnswer) {
-    if (selectAnswer === questions [currentQuestionIndex].correctAnswer) {
+function checkAnswer(selectedAnswer) {
+    if (selectedAnswer === questions[currentQuestionIndex].correctAnswer) {
         showFeedback ("correct");
     }
     else {
@@ -58,11 +71,11 @@ function checkAnswer(selectAnswer) {
     }
 
     if (currentQuestionIndex < questions.length) {
-        displayQuesation(currentQuestionIndex);
+        displayQuestion(currentQuestionIndex);
     }
     else {
         endQuiz();
-    };
+    }
 
 function showFeedback(message) {
     feedbackContainer.textContent = message;
@@ -101,6 +114,10 @@ function updateTime(time) {
       }
     
     function submitScore() {
-
+        var initials = initialsInput.value.trim();
+        if (initials !=="") {
+            console.log("Score submitted:", initials, timeElement.textContent);
+        }
     }
-}
+
+    });
