@@ -1,19 +1,14 @@
-
-var questions = [
-
-];
-
 document.addEventListener("DOMContentLoaded", function() {
 
-var startButton = document.getElementById("start");
-var timeElement = document.getElementById("time");
-var submitButton = document.getElementById("submit");
-var questionsContainer = document.getElementById("questions");
-var feedbackContainer = document.getElementById("feedback");
-var initialsUnput = document.getElementById("initials");
+    var startButton = document.getElementById("start");
+    var timeElement = document.getElementById("time");
+    var submitButton = document.getElementById("submit");
+    var questionsContainer = document.getElementById("questions");
+    var feedbackContainer = document.getElementById("feedback");
+    var initialsInput = document.getElementById("initials");
 
-var currentQuestionIndex = 0;
-var timer;
+    var currentQuestionIndex = 0;
+    var timer;
 
 startButton.addEventListener("click", startQuiz);
 submitButton.addEventListener("click", submitScore);
