@@ -1,3 +1,4 @@
+
 var questions = [
 
 ];
@@ -11,8 +12,8 @@ var questionsContainer = document.getElementById("questions");
 var feedbackContainer = document.getElementById("feedback");
 var initialsUnput = document.getElementById("initials");
 
-let currentQuestionIndex = 0;
-let timer;
+var currentQuestionIndex = 0;
+var timer;
 
 startButton.addEventListener("click", startQuiz);
 submitButton.addEventListener("click", submitScore);
