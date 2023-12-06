@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var questionsContainer = document.getElementById("questions");
     var feedbackContainer = document.getElementById("feedback");
     var initialsInput = document.getElementById("initials");
+    var correctSound = document.getElementById("correctSound");
+    var incorrectSound = document.getElementById("incorrectSound");
 
     var currentQuestionIndex = 0;
     var timer;
@@ -55,9 +57,11 @@ function shuffleArray(array) {
     function checkAnswer(selectedAnswer) {
         if (selectedAnswer === questions[currentQuestionIndex].correctAnswer) {
             showFeedback("Correct!");
+            playCorrectSound();
         } else {
             showFeedback("Incorrect!");
             deductTime();
+            playIncorrectSound();
         }
 
         currentQuestionIndex++;
@@ -67,6 +71,14 @@ function shuffleArray(array) {
         } else {
             endQuiz();
         }
+    }
+
+    function playCorrectSound() {
+        correctSound.play();
+    }
+
+    function playIncorrectSound() {
+        incorrectSound.play();
     }
 
     function showFeedback(message) {
